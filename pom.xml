@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.the_iea</groupId>
+    <version>0.1-SNAPSHOT</version>
+    <artifactId>s4c-viz</artifactId>
+    <name>S4C Visualisations</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <edal.version>1.4.0</edal.version>
+        <iea.url>http://the-iea.org</iea.url>
+    </properties>
+
+    <url>https://bitbucket.org/GuyGriffiths/edal-multiglobe-desktop</url>
+    <inceptionYear>2018</inceptionYear>
+    <description>Description to follow...(maybe)</description>
+    <organization>
+        <name>The Institute for Environmental Analytics</name>
+        <url>${iea.url}</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Guy Griffiths</name>
+            <organization>The Institute for Environmental Analytics</organization>
+            <organizationUrl>${iea.url}</organizationUrl>
+            <email>guy.griffiths@the-iea.org</email>
+        </developer>
+    </developers>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>org.the_iea.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <finalName>s4c-viz</finalName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.1</version>
+                <configuration>
+                    <mainClass>org.the_iea.Main</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Sets the source version to 1.8 -->
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+                <version>3.7.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <useReleaseProfile>true</useReleaseProfile>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- This is required for Java 8 until we make all javadoc W3C HTML 4.01 compliant -->
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <version>2.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <version>2.2.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                </configuration>
+                <version>2.9</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <finalName>s4c-viz</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <!-- <issueManagement> <system>github</system> <url></url> </issueManagement> -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.rdg.resc</groupId>
+            <artifactId>edal-graphics</artifactId>
+            <version>${edal.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.rdg.resc</groupId>
+            <artifactId>edal-cdm</artifactId>
+            <version>${edal.version}</version>
+        </dependency>
+        <!-- Has a nice implementation of a queue -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
+    </dependencies>
+    <!-- <scm> <connection>scm:hg:https://edal-java.googlecode.com/hg/</connection> <developerConnection>scm:hg:https://edal-java.googlecode.com/hg/</developerConnection> <url>http://code.google.com/p/edal-java/source/browse/</url> </scm> -->
+</project>
