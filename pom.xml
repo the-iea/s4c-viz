@@ -9,7 +9,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <edal.version>1.4.0</edal.version>
+        <edal.version>1.4.2-SNAPSHOT</edal.version>
         <iea.url>http://the-iea.org</iea.url>
     </properties>
 
