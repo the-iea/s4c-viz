@@ -155,4 +155,17 @@
         </dependency>
     </dependencies>
     <!-- <scm> <connection>scm:hg:https://edal-java.googlecode.com/hg/</connection> <developerConnection>scm:hg:https://edal-java.googlecode.com/hg/</developerConnection> <url>http://code.google.com/p/edal-java/source/browse/</url> </scm> -->
+    <repositories>
+        <repository>
+          <id>maven-snapshots</id>
+          <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+          <layout>default</layout>
+            <releases>
+              <enabled>false</enabled>
+            </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
 </project>
